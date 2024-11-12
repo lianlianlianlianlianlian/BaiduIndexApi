@@ -1,0 +1,38 @@
+name: Run API Script
+
+on:
+  workflow_dispatch:  # 允许手动触发工作流
+  schedule:
+  cron: '0 0 * * *'
+
+jobs:
+  run-api:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Python 3.10
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: |
+          pip install --no-cache-dir requests xmltodict  # 安装依赖
+
+      - name: Run api.py
+        run: python api.py  # 执行脚本
+
+
+      - name: Run img.py
+        run: python img.py  # 执行脚本
+
+
+      - name: Run blog.py
+        run: python blog.py  # 执行脚本
+
+
+
+        
