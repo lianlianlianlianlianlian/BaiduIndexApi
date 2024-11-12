@@ -8,20 +8,18 @@ BAIDU_API_URL = 'http://data.zz.baidu.com/urls?site=https://img.darklotus.cn&tok
 HEADERS = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
 }
-MANUAL_URL_FILE = 'urls.txt'  # 本地 URL 文件名
+# 自定义 URL 列表
+URLS = [
+    'https://img.darklotus.cn/',
+    'https://img.darklotus.cn/random',
+    'https://img.darklotus.cn/day',
+    'https://img.darklotus.cn/4k',
+    'https://img.darklotus.cn/mobile',
+    'https://img.darklotus.cn/gif',
+    'https://img.darklotus.cn/avatar',
+    'https://img.darklotus.cn/bd',
 
-# 从文件中读取手动提交的 URL
-def read_manual_urls(filename):
-    """
-    从指定文件读取 URL
-    """
-    try:
-        with open(filename, 'r', encoding='utf-8') as f:
-            urls = [line.strip() for line in f if line.strip()]  # 读取每行并去除空白
-        return urls
-    except Exception as e:
-        print(f"读取手动 URL 文件时出错: {e}")
-        return []
+]
 
 # 提交 URL 到百度收录 API
 def submit_url_to_baidu(url):
@@ -50,14 +48,12 @@ def submit_url_to_baidu(url):
 # 记录日志
 def log_submission(url, response, domain):
     """
-    记录成功提交的 URL 和响应状态到日志文件
+    记录成功提交的 URL 和响应状态到日志
     """
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")  # 获取当前时间
-    status_message = "提交成功" if response.get('success') == 1 else "提交失败"  # 根据状态设置消息
-    log_filename = f"{domain}_log.txt"  # 生成日志文件名
-    with open(log_filename, 'a', encoding='utf-8') as log:  # 以追加模式打开日志文件
-        log_entry = f"{timestamp} {url} 状态: {status_message}\n"  # 格式化日志条目
-        log.write(log_entry)  # 写入日志文件
+    status_message = "提交成功" if response and response.get('success') == 1 else "提交失败"  # 根据状态设置消息
+    log_entry = f"{timestamp} {url} 状态: {status_message}"  # 格式化日志条目
+    print(log_entry)  # 打印到控制台
 
 # 从 URL 中提取域名
 def extract_domain(api_url):
@@ -72,16 +68,15 @@ def extract_domain(api_url):
 # 主程序
 def main():
     """
-    主程序，执行读取 URL 和逐条提交 URL 的过程
+    主程序，执行逐条提交 URL 的过程
     """
-    urls = read_manual_urls(MANUAL_URL_FILE)  # 从文件获取 URL 列表
-    domain = extract_domain(BAIDU_API_URL)  # 提取域名用于日志文件名
+    domain = extract_domain(BAIDU_API_URL)  # 提取域名用于日志记录
     
-    if urls:
-        print("成功获取到 URL:", urls)  # 打印获取到的 URL
-        for url in urls:  # 逐条提交 URL
+    if URLS:
+        print("成功获取到 URL:", URLS)  # 打印获取到的 URL
+        for url in URLS:  # 逐条提交 URL
             response = submit_url_to_baidu(url)  # 提交 URL 到百度收录 API
-            log_submission(url, response, domain)  # 记录日志
+            log_submission(url, response, domain)  # 记录日志到控制台
             time.sleep(2)  # 等待 2 秒后再提交下一个 URL
     else:
         print("未找到任何 URL，无法提交。")

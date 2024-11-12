@@ -4,22 +4,22 @@ from datetime import datetime
 from urllib.parse import urlparse
 
 # 参数配置
-BAIDU_API_URL = 'http://data.zz.baidu.com/urls?site=https://blog.darklotus.cn&token=DzWQIBW7fXILKWYN'  # 百度收录 API 地址
+BAIDU_API_URL = 'http://data.zz.baidu.com/urls?site=https://darklotus.cn&token=DzWQIBW7fXILKWYN'  # 百度收录 API 地址
 HEADERS = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
 }
 # 多行字符串方式定义 URL
 URLS = """
-https://blog.darklotus.cn/
-https://blog.darklotus.cn/tutorials/r730xd.html
-https://blog.darklotus.cn/tutorials/weixinzhuanfadaili.html
-https://blog.darklotus.cn/tutorials/minioavifyulan.html
-https://blog.darklotus.cn/tutorials/miniofavicon.html
-https://blog.darklotus.cn/tutorials/iiscfpassip.html
-https://blog.darklotus.cn/tutorials/dsmphotooftheday.html
-https://blog.darklotus.cn/tutorials/dellfancontroldocker.html
-https://blog.darklotus.cn/tutorials/dellidracforeign.html
-https://blog.darklotus.cn/tutorials/testdsmdiskspeed.html
+https://darklotus.cn/
+https://darklotus.cn/docs
+https://darklotus.cn/blog
+https://darklotus.cn/project
+https://darklotus.cn/friends
+https://darklotus.cn/about
+https://darklotus.cn/milestones
+https://darklotus.cn/blog/tags
+https://darklotus.cn/blog/archive
+https://darklotus.cn/privacy
 """.strip().splitlines()  # 按换行符拆分成列表
 
 # 提交 URL 到百度收录 API
