@@ -10,16 +10,16 @@ HEADERS = {
 }
 # 多行字符串方式定义 URL
 URLS = """
-https://blog.darklotus.cn/
-https://blog.darklotus.cn/tutorials/r730xd.html
-https://blog.darklotus.cn/tutorials/weixinzhuanfadaili.html
-https://blog.darklotus.cn/tutorials/minioavifyulan.html
-https://blog.darklotus.cn/tutorials/miniofavicon.html
-https://blog.darklotus.cn/tutorials/iiscfpassip.html
-https://blog.darklotus.cn/tutorials/dsmphotooftheday.html
-https://blog.darklotus.cn/tutorials/dellfancontroldocker.html
-https://blog.darklotus.cn/tutorials/dellidracforeign.html
-https://blog.darklotus.cn/tutorials/testdsmdiskspeed.html
+https://blog.darklotus.cn/tutorials/cloudflarewafconfig.html
+https://blog.darklotus.cn/tutorials/npmjiasu.html
+https://blog.darklotus.cn/notes/nasallinone.html
+https://blog.darklotus.cn/tutorials/syncapplepasswordschromeedge.html
+https://blog.darklotus.cn/tutorials/importbrowserpasswordstoicloud.html
+https://blog.darklotus.cn/notes/heike666666.html
+https://blog.darklotus.cn/notes/macsip.html
+https://blog.darklotus.cn/tutorials/typechofwrite.html
+https://blog.darklotus.cn/tutorials/blogbackup.html
+https://blog.darklotus.cn/tutorials/e5cpumacos.html
 """.strip().splitlines()  # 按换行符拆分成列表
 
 # 提交 URL 到百度收录 API
